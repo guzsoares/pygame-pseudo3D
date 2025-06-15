@@ -55,7 +55,17 @@ class RayCasting:
                 depth = depth_hor
 
             # draw for debug
-            pg.draw.line(self.game.screen, "red", (100 * ox, 100 * oy), (100 * ox + 100 * depth * ray_angle_cos, 100 * oy + 100 * depth * ray_angle_sin), 2)
+            #pg.draw.line(self.game.screen, "red", (100 * ox, 100 * oy), (100 * ox + 100 * depth * ray_angle_cos, 100 * oy + 100 * depth * ray_angle_sin), 2)
+
+            # corrige a profundidade para a inclinação do jogador
+            depth *= math.cos(self.game.player.angle - ray_angle)
+
+            proj_height = SCREEN_DIST / (depth + 0.0001)
+
+            # draw pseudo 3d walls
+            color = [255 / (1 + depth ** 5 * 0.0002)] * 3
+            pg.draw.rect(self.game.screen, color, (ray * SCALE, HALF_HEIGHT - proj_height // 2, SCALE, proj_height))
+
 
             ray_angle += DELTA_ANGLE
             
