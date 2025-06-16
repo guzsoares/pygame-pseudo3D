@@ -53,11 +53,20 @@ class Player:
             self.y += dy
 
     def draw(self):
-        #pg.draw.line(self.game.screen, "yellow",(self.x * 100, self.y * 100), (self.x * 100 + WIDTH * math.cos(self.angle), self.y * 100 + WIDTH * math.sin(self.angle)), 2)
+        pg.draw.line(self.game.screen, "yellow",(self.x * 100, self.y * 100), (self.x * 100 + WIDTH * math.cos(self.angle), self.y * 100 + WIDTH * math.sin(self.angle)), 2)
         pg.draw.circle(self.game.screen, "red", (self.x * 100, self.y * 100), 15)
+
+    def mouse_control(self):
+        mx, my = pg.mouse.get_pos()
+        if mx < MOUSE_BORDER_LEFT or mx > MOUSE_BORDER_RIGHT:
+            pg.mouse.set_pos([HALF_WIDTH, HALF_HEIGHT])
+        self.rel = pg.mouse.get_rel()[0]
+        self.rel = max(-MOUSE_MAX_REL, min(MOUSE_MAX_REL, self.rel))
+        self.angle += self.rel * MOUSE_SENSITIVY * self.game.delta_time
 
     def update(self):
         self.movement()
+        self.mouse_control()
 
     @property
     def pos(self):

@@ -4,13 +4,19 @@ import pygame as pg
 # 1 = WALL
 A = False
 
-minimap = [[1,1,1,1,1,1,1,1,1,1,1,1],
-           [1,A,A,A,A,A,A,A,A,A,A,1],
-           [1,A,A,1,1,1,1,1,A,A,A,1],
-           [1,A,A,A,A,A,A,1,A,A,A,1],
-           [1,A,A,A,A,A,A,1,A,A,A,1],
-           [1,A,A,A,A,A,A,A,A,A,A,1],
-           [1,1,1,1,1,1,1,1,1,1,1,1]]
+minimap = [[1,1,1,1,1,1,1,1,3,3,2,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4],
+           [1,A,A,A,A,A,A,1,2,A,2,4,4,4,4,4,A,A,A,A,A,A,A,A,A,A,A,A,A,A,A,4],
+           [1,A,A,1,1,1,1,1,3,A,3,2,2,2,3,4,A,A,A,A,A,A,A,A,A,A,A,A,A,A,A,4],
+           [1,A,A,A,A,A,A,1,2,A,A,A,A,A,2,4,A,A,A,A,A,A,4,4,A,A,A,A,A,A,A,4],
+           [1,A,A,A,A,A,A,1,2,A,A,A,A,A,3,4,A,A,A,A,A,A,4,4,A,A,A,A,A,A,A,4],
+           [1,A,A,1,1,1,1,1,2,A,A,A,A,A,3,4,A,A,A,A,A,A,4,4,A,A,A,A,A,A,A,4],
+           [1,A,A,1,3,2,2,3,3,A,A,A,A,A,2,4,A,A,A,A,A,A,4,4,A,A,A,A,A,A,A,4],
+           [1,A,A,A,A,A,A,A,A,A,A,A,A,A,2,4,A,A,A,A,A,A,A,A,A,A,A,A,A,A,A,4],
+           [1,A,A,1,3,A,A,A,A,A,A,A,A,A,2,4,A,A,A,A,A,A,A,A,A,A,A,A,A,A,A,4],
+           [1,A,A,1,2,A,3,2,2,2,3,2,3,2,3,4,A,A,A,A,A,A,A,A,A,A,A,A,4,A,A,4],
+           [1,A,A,1,2,A,A,A,A,A,A,A,A,A,A,A,A,A,A,A,A,A,A,A,A,A,A,A,4,A,A,4],
+           [1,A,A,1,3,A,A,A,A,A,A,A,2,2,3,4,A,A,A,A,A,A,A,A,A,A,A,A,4,A,A,4],
+           [1,1,1,1,3,3,2,2,2,3,3,2,2,2,2,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4]]
 
 class Map:
     def __init__(self, game):
