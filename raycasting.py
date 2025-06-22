@@ -86,7 +86,7 @@ class RayCasting:
                 offset = x_hor if ray_angle_sin > 0 else 1 - x_hor
 
             # draw for debug
-            pg.draw.line(self.game.screen, "red", (100 * ox, 100 * oy), (100 * ox + 100 * depth * ray_angle_cos, 100 * oy + 100 * depth * ray_angle_sin), 2)
+            #pg.draw.line(self.game.screen, "red", (100 * ox, 100 * oy), (100 * ox + 100 * depth * ray_angle_cos, 100 * oy + 100 * depth * ray_angle_sin), 2)
 
             # corrige a profundidade para a inclinação do jogador
             depth *= math.cos(self.game.player.angle - ray_angle)

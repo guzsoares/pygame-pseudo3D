@@ -34,7 +34,7 @@ class Map:
                     print(self.worldmap)
 
     def draw(self):
-        [pg.draw.rect(self.game.screen, "darkgray", (x * 100, y * 100, 100, 100), 2) for x, y in self.worldmap]
+        [pg.draw.rect(self.game.screen, "white", (x * 100, y * 100, 100, 100), 2) for x, y in self.worldmap]
 
 
 
