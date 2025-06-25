@@ -7,6 +7,14 @@ class Player:
         self.game = game
         self.x, self.y = PLAYER_POS
         self.angle = PLAYER_ANGLE
+        self.shot = False
+
+    def single_fire_event(self, event):
+        if event.type == pg.MOUSEBUTTONDOWN:
+            if event.button == 1 and not self.shot and not self.game.weapon.reloading:  # botão esquerdo do mouse
+                self.shot = True
+                self.game.weapon.reloading = True
+                self.game.sound.shotgun.play()
 
     # movimentação do jogador, usamos trigonometria para calcular o deslocamento baseado no ângulo e velocidade
     def movement(self):
