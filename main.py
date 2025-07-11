@@ -42,7 +42,7 @@ class Game:
         self.object_renderer.draw()
         self.weapon.draw()
         #self.map.draw()
-        #elf.player.draw()
+        #self.player.draw()
 
     def check_events(self):
         for event in pg.event.get():
