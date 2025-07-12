@@ -8,10 +8,31 @@ class ObjectRenderer:
         self.wall_textures = self.load_wall_textures()
         self.sky_image = self.get_texture('textures/sky.png', (WIDTH, HALF_HEIGHT))
         self.sky_offset = 0
+        self.blood_screen = self.get_texture('textures/blood_screen.png', (WIDTH, HEIGHT))
+        self.digit_size = 80
+        self.digit_images = [self.get_texture(f'textures/digits/{i}.png', [self.digit_size] * 2) for i in range(11)]
+        self.digits = dict(zip(map(str, range(11)), self.digit_images))
+        self.game_over_image = self.get_texture('textures/game_over.png', (WIDTH, HEIGHT))
 
     def draw(self):
         self.draw_background()
         self.render_game_objects()
+        self.draw_player_health()
+
+    def game_over(self):
+        self.screen.blit(self.game_over_image, (0, 0))
+        
+    def draw_player_health(self):
+        health = str(self.game.player.health)
+        for i, char in enumerate(health):
+            self.screen.blit(self.digits[char], (i * self.digit_size, 0))
+        self.screen.blit(self.digits['10'], (len(health) * self.digit_size, 0)) 
+        
+
+    def player_damage(self):
+        self.screen.blit(self.blood_screen, (0, 0))
+        pg.display.flip()
+        pg.time.delay(10)
 
     def draw_background(self):
         self.sky_offset = (self.sky_offset + 4.5 * self.game.player.rel) % WIDTH
