@@ -13,6 +13,9 @@ class Player:
 
     def check_game_over(self):
         if self.health <= 0:
+            # Reset score when player dies
+            if hasattr(self.game, 'score_manager'):
+                self.game.score_manager.reset_score()
             self.game.object_renderer.game_over()
             pg.display.flip()
             pg.time.delay(1500)

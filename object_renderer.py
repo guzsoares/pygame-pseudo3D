@@ -18,6 +18,7 @@ class ObjectRenderer:
         self.draw_background()
         self.render_game_objects()
         self.draw_player_health()
+        self.draw_score()
 
     def game_over(self):
         self.screen.blit(self.game_over_image, (0, 0))
@@ -57,4 +58,10 @@ class ObjectRenderer:
             2: self.get_texture("textures/blood_wall1.png"),
             3: self.get_texture("textures/blood_wall2.png"),
             4: self.get_texture("textures/noblood_wall.png"),
+            5: self.get_texture("textures/symbol_wall.png"),
         }
+    
+    def draw_score(self):
+        """Desenha a pontuação na tela"""
+        if hasattr(self.game, 'score_manager'):
+            self.game.score_manager.draw_score(self.screen)

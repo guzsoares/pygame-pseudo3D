@@ -10,6 +10,7 @@ from object_handler import *
 from weapon import *
 from sound import *
 from pathfinding import *
+from score_manager import *
 
 class Game:
     def __init__(self):
@@ -33,6 +34,7 @@ class Game:
         self.pathfinding = PathFinding(self)
         self.weapon = Weapon(self)
         self.sound = Sound(self)
+        self.score_manager = ScoreManager(self)
 
     def update(self):
         self.player.update()
